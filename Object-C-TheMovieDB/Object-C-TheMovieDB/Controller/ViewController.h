@@ -2,15 +2,23 @@
 //  ViewController.h
 //  Object-C-TheMovieDB
 //
-//  Created by Consultant on 1/12/23.
+//  Created by Consultant on 1/11/23.
 //
-
 #import <UIKit/UIKit.h>
+#import "Movie.h"
+#import "Service.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *movies_mainTableView;
+
+@property NSArray<Movie *> *popularMovies;
+
+@property NSArray<Movie *> *filtedPopularArray;
+
+-(void) setupNavigationBar;
+
+- (NSArray *) sortMovieArrayByVoteAverage:(NSMutableArray<Movie *> *)movieArray;
+
 
 @end
-
-NS_ASSUME_NONNULL_END

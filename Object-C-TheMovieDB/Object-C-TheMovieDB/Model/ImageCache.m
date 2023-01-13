@@ -5,11 +5,7 @@
 //  Created by Consultant on 1/11/23.
 //
 
-#import "ImageCach.h"
-
-//@interface ImageCach ()
-//
-//@end
+#import "ImageCache.h"
 
 @implementation ImageCache
 
@@ -30,11 +26,6 @@
     }
     return self;
 }
-
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view.
-//}
 
 
 @end

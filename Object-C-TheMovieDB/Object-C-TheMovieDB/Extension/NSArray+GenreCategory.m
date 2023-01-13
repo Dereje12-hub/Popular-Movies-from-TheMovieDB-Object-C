@@ -2,30 +2,29 @@
 //  NSArray+GenreCategory.m
 //  Object-C-TheMovieDB
 //
-//  Created by Consultant on 1/12/23.
+//  Created by Consultant on 1/11/23.
 //
 
 #import "NSArray+GenreCategory.h"
 
-@interface NSArray_GenreCategory ()
+@implementation NSArray (GenreCategory)
 
-@end
-
-@implementation NSArray_GenreCategory
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (NSString *) getStringWithCommas: (NSString *) dicKey {
+    
+    NSString *resultString = NSString.new;
+    NSString *symbol = @", ";
+    
+    for (NSDictionary *genreObject in self) {
+        NSString *stringValue = [genreObject objectForKey: dicKey];
+        
+        if (genreObject != self.lastObject) {
+             stringValue = [stringValue stringByAppendingString: symbol];
+        }
+        
+        resultString = [resultString stringByAppendingString: stringValue];
+    }
+    
+    return resultString;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

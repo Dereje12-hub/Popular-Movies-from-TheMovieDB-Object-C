@@ -2,14 +2,18 @@
 //  NSArray+GenreCategory.h
 //  Object-C-TheMovieDB
 //
-//  Created by Consultant on 1/12/23.
+//  Created by Consultant on 1/11/23.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSArray_GenreCategory : UIViewController
+@interface NSArray (GenreCategory)
+
+
+// NSArray to return genre full String
+- (NSString *) getStringWithCommas: (NSString *) dicKey;
 
 @end
 

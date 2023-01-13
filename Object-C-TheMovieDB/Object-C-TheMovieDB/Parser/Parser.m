@@ -5,46 +5,38 @@
 //  Created by Consultant on 1/12/23.
 //
 
-#import "Parse.h"
+#import "Parser.h"
 #import "NSArray+GenreCategory.h"
 
-@interface Parse ()
 
-@end
-
-@implementation Parse
-
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view.
-//}
+@implementation Parser
 
 
 static NSString *const imageBaseURL = @"https://image.tmdb.org/t/p/w500";
 
-+ (Movie *)parseMovie:(NSDictionary *)movieDic {
++ (Movie *)parseMovie:(NSDictionary *)movieDictionary {
     
     Movie *movieDetails = [[Movie alloc] init];
     
-    movieDetails.title = [movieDic objectForKey: @"original_title"];
-    movieDetails.overview = [movieDic objectForKey: @"overview"];
-    movieDetails.vote_avegare = [movieDic objectForKey:@"vote_average"];
+    movieDetails.title = [movieDictionary objectForKey: @"original_title"];
+    movieDetails.overview = [movieDictionary objectForKey: @"overview"];
+    movieDetails.vote_avegare = [movieDictionary objectForKey:@"vote_average"];
     
     // Image
-    NSString *poster_path = [movieDic objectForKey: @"poster_path"];
+    NSString *poster_path = [movieDictionary objectForKey: @"poster_path"];
     movieDetails.imageURL = [imageBaseURL stringByAppendingString: poster_path];
     
     // Genres
-    NSArray *genresObjectArray = [movieDic objectForKey: @"genres"];
+    NSArray *genresObjectArray = [movieDictionary objectForKey: @"genres"];
     movieDetails.genres = [genresObjectArray getStringWithCommas: @"name"];
     
     return movieDetails;
     
 }
 
-+ (NSMutableArray<Movie *> *)parseMovies:(NSDictionary *) moviesDic {
++ (NSMutableArray<Movie *> *)parseMovies:(NSDictionary *) movieDictionary {
     
-    NSArray *moviesResultArray = [moviesDic objectForKey: @"results"];
+    NSArray *moviesResultArray = [movieDictionary objectForKey: @"results"];
     
     NSMutableArray *movies = [[NSMutableArray alloc] init];
     

@@ -1,6 +1,6 @@
 
 //
-//  ImageView.h
+//  CustomImageView.h
 //  Object-C-TheMovieDB
 //
 //  Created by Consultant on 1/11/23.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CustomImageView : NSObject //UIImageView
+@interface CustomImageView : UIImageView
 
 @property (nullable) NSString *imageURL;
 

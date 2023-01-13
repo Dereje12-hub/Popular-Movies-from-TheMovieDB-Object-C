@@ -11,10 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Parse : UIViewController
+@interface Parser : UIViewController
 
-+ (Movie *) parseMovie: (NSDictionary *) movieDic;
-+ (NSMutableArray<Movie *> *) parseMovies: (NSDictionary *) moviesDic;
++ (Movie *) parseMovie: (NSDictionary *) movieDictionary;
+
++ (NSMutableArray<Movie *> *) parseMovies: (NSDictionary *) movieDictionary;
 
 
 @end

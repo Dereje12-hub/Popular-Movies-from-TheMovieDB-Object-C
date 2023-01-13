@@ -2,10 +2,11 @@
 //  MovieDetailVC.m
 //  Object-C-TheMovieDB
 //
-//  Created by Consultant on 1/12/23.
+//  Created by Consultant on 1/11/23.
 //
 
 #import "MovieDetailVC.h"
+#import "Service.h"
 
 @interface MovieDetailVC ()
 
@@ -16,16 +17,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+        [Service fetchMovieDetails:_movieID completion:^(Movie * movie) {
+            self.movie = movie;
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+                self.movieTitleLabel.text = self.movie.title;
+                self.movieGenreLabel.text = self.movie.genres;
+
+                self.voteAverageImage.hidden = false;
+                self.movieVoteAverageLabel.hidden = false;
+                self.overviewLabel.hidden = false;
+
+                self.movieVoteAverageLabel.text = [NSString stringWithFormat:@"%.01f", self.movie.vote_avegare.doubleValue];
+                self.movieOverviewTextView.text = self.movie.overview;
+
+                [self.movieDetailImage loadImageWithStringURL: self.movie.imageURL];
+                self.movieDetailImage.layer.cornerRadius = 10;
+            });
+        }];
+
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

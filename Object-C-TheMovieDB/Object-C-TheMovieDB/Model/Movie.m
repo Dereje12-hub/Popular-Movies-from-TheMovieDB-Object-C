@@ -2,30 +2,36 @@
 //  Movie.m
 //  Object-C-TheMovieDB
 //
-//  Created by Consultant on 1/12/23.
+//  Created by Consultant on 1/11/23.
 //
-
+#import <Foundation/Foundation.h>
 #import "Movie.h"
-
-@interface Movie ()
-
-@end
 
 @implementation Movie
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+//This instancetype DOES NOT do anything for this project. I kept it for future use
+
+-(instancetype) initFromDictionary:(NSDictionary *)dictionary {
+    self = [super init];    //initializing the self method
+    if(self){
+        //custom init
+        self.id_movie = [[dictionary valueForKey:@"id_movie"] integerValue];
+        self.title = [dictionary valueForKey:@"original_title"];
+        self.backdropPath = [dictionary valueForKey:@"backdrop_ath"];
+        self.posterPath = [dictionary valueForKey:@"poster_path"];
+        self.overview = [dictionary valueForKey:@"overview"];
+        self.voteAverage = [[dictionary valueForKey:@"vote_average"] integerValue];
+        self.voteCount = [[dictionary valueForKey:@"vote_count"] integerValue];
+        self.runtime = [[dictionary valueForKey:@"runtime"] integerValue];
+        self.releaseDate = [dictionary valueForKey:@"release_date"];
+        
+    }
+    return self;
+    
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
+
